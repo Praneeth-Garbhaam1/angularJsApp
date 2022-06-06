@@ -6,16 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Search box | Keyboard type</title>
+        <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '686592159066848',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.10'
+            });
+
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+
+        };
+        function statusChangeCallback(){
+            if(response.status == 'connected'){
+                console.log('connected')
+            }else
+            {
+                console.log('Not connected')
+            }
+        }
+
+        
+            function checkLoginState() {
+                FB.getLoginStatus(function (response) {
+                    statusChangeCallback(response);
+                });
+            }
+            
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
 </head>
-<body>
-    <div class="searchBox">
+<body ng-app>
+    
+    
+<!--     <div class="searchBox">
         <div class="shadow"></div>
         <input type="text" placeholder="Search Anything You Want...">
         <div class="icon">
             <ion-icon name="search-outline"></ion-icon>
         </div>
-    </div>
+    </div> -->
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
 </body>
 </html>
